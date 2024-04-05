@@ -58,7 +58,7 @@ body {
 }
 
 #navbar ul li a:hover {
-  color: #ff7f50; /* Change color on hover */
+  color: #ff7f50; 
 }
 
 #content {
@@ -66,7 +66,7 @@ body {
 }
 
 .scrolled {
-  background-color: #555; /* Change background color when scrolled */
+  background-color: #555;
 }
 //Javascript(code,)
 window.addEventListener('scroll', function() {
