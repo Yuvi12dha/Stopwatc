@@ -1,0 +1,50 @@
+//HTML(CODE)
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About Me</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="home" class="home-section">
+    <div class="container">
+      <h1>Welcome to My Portfolio</h1>
+      <img src="profile.jpg" alt="Profile Photo">
+      <p class="summary">I am a passionate web developer with expertise in HTML, CSS, and JavaScript. Explore my portfolio to see my projects and skills.</p>
+    </div>
+  </section>
+
+  <section id="about" class="about-section">
+    <div class="container">
+      <h2>About Me</h2>
+      <p class="background">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae libero vitae felis tristique eleifend. Nulla facilisi. Phasellus tincidunt bibendum turpis, vel fermentum velit scelerisque eget.</p>
+      <p class="education">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae libero vitae felis tristique eleifend. Nulla facilisi. Phasellus tincidunt bibendum turpis, vel fermentum velit scelerisque eget.</p>
+      <p class="experience">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae libero vitae felis tristique eleifend. Nulla facilisi. Phasellus tincidunt bibendum turpis, vel fermentum velit scelerisque eget.</p>
+    </div>
+  </section>
+
+  <!-- More sections for Projects, Contact, etc. -->
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2024 My Portfolio</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+//CSS(CODE)
