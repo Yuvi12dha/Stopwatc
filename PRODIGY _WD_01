@@ -1,0 +1,79 @@
+//HTML(CODE):
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Navigation Menu</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav id="navbar">
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div id="content">
+    <!-- Your content here -->
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+//CSS(CODE):
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+#navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #333;
+  z-index: 1000; /* Ensure the menu stays on top of other content */
+  transition: background-color 0.3s ease;
+}
+
+#navbar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 10px 0;
+  text-align: center;
+}
+
+#navbar ul li {
+  display: inline;
+  margin: 0 15px;
+}
+
+#navbar ul li a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+#navbar ul li a:hover {
+  color: #ff7f50; /* Change color on hover */
+}
+
+#content {
+  padding-top: 50px; /* Ensure content is not hidden behind the fixed navbar */
+}
+
+.scrolled {
+  background-color: #555; /* Change background color when scrolled */
+}
+//Javascript(code,)
+window.addEventListener('scroll', function() {
+  var navbar = document.getElementById('navbar');
+  if (window.scrollY > 0) {
+    navbar.classList.add('scrolled');
+  } else {
+    navbar.classList.remove('scrolled');
+  }
+});
