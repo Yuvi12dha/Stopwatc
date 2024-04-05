@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stopwatch</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="container">
+  <div class="stopwatch">
+    <div id="display">00:00:00</div>
+    <button id="startStop" onclick="startStop()">Start</button>
+    <button id="lapReset" onclick="lapReset()" disabled>Lap</button>
+  </div>
+  <ul id="laps"></ul>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
+css(code):
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+}
+
+.container {
+  max-width: 400px;
+  margin: 50px auto;
+}
+
+.stopwatch {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+#display {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 1em;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+javascript(code)
+let timer;
+let running = false;
+let startTime;
+let lapTimes = [];
+
+function startStop() {
+  if (running) {
+    clearInterval(timer);
+    document.getElementById('startStop').textContent = 'Start';
+    document.getElementById('lapReset').textContent = 'Reset';
+    running = false;
+  } else {
+    startTime = Date.now() - lapTimes.reduce((acc, curr) => acc + curr, 0);
+    timer = setInterval(updateDisplay, 10);
+    document.getElementById('startStop').textContent = 'Stop';
+    document.getElementById('lapReset').textContent = 'Lap';
+    running = true;
+  }
+}
+
+function lapReset() {
+  if (running) {
+    const lapTime = Date.now() - startTime;
+    lapTimes.push(lapTime);
+    const lapDisplay = document.createElement('li');
+    lapDisplay.textContent = formatTime(lapTime);
+    document.getElementById('laps').appendChild(lapDisplay);
+  } else {
+    clearInterval(timer);
+    document.getElementById('display').textContent = '00:00:00';
+    document.getElementById('laps').innerHTML = '';
+    document.getElementById('startStop').textContent = 'Start';
+    document.getElementById('lapReset').textContent = 'Reset';
+    lapTimes = [];
+  }
+}
+
+function updateDisplay() {
+  const elapsed = Date.now() - startTime;
+  document.getElementById('display').textContent = formatTime(elapsed);
+}
+
+function formatTime(ms) {
+  const date = new Date(ms);
+  const minutes = String(date.getMinutes()).padStart(2, '0');
+  const seconds = String(date.getSeconds()).padStart(2, '0');
+  const milliseconds = String(Math.floor(date.getMilliseconds() / 10)).padStart(2, '0');
+  return `${minutes}:${seconds}:${milliseconds}`;
+}
